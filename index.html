@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+    content="Single Twistable Tendon-Driven Continuum Robots">
+  <meta name="keywords" content="Soft Robotics, Continuum Robotics, Bioinspired Robots, Medical Robots">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>
+    Single Twistable Tendon-Driven Continuum Robots
+  </title>
+
+
+
+   
+<link rel="icon"
+      href="data:image/svg+xml,
+      <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>
+        <text x='50' y='70' font-size='80' text-anchor='middle'>🧬</text>
+      </svg>">
+
+
+
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <style>
+    @keyframes rainbow-wave {
+      0% {
+        background-position: 0% center;
+      }
+      50% {
+        background-position: 100% center;
+      }
+      100% {
+        background-position: 0% center;
+      }
+    }
+    .rainbow-wave {
+      background: linear-gradient(90deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #9400d3, #ff0000);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: rainbow-wave 3s linear infinite;
+    }
+    .vase-video {
+      border-radius: 20px;
+    }
+  </style>
+
+  <script src="https://kit.fontawesome.com/19914a84eb.js" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+
+<body>
+  <section class="hero is-black is-fullheight video" style="overflow: hidden; position:relative;">
+    <div class="hero-video" style="height: 100%; transform: scale(0.9); transform-origin: center;">
+      <video playsinline autoplay muted loop>
+        <source src="./static/videos/teaser-small.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="hero-video is-hidden-tablet is-inline-block-mobile"
+      style="height: 154.28571428vw; width: 100%; min-width:64.81481481vh; min-height:100%;">
+      <video playsinline autoplay muted loop >
+        <source src="./static/videos/teaser-mobile-small.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="overlay"></div>
+
+    <div class="hero-head is-hidden-mobile">
+      <header class="navbar">
+        <div class="container is-size-5">
+          <div class="navbar-menu">
+            <div class="navbar-end">
+              <a class="navbar-item pl-4 pr-4" href="" target="_blank>
+                <span class="icon" style="margin-right:5px;"><img src="./static/images/pdf.svg" alt="PDF" /></span>
+                <span>Paper</span>
+              </a>
+              <a class="navbar-item pl-4 pr-4" href="https://youtu.be/jZHkQFK1uPI" target="_blank>
+                <span class="icon" style="margin-right:5px;"><img src="./static/images/youtube.svg" alt="Video" /></span>
+                <span>Video</span>
+              </a>
+              <a class="navbar-item pl-4 pr-4" href="https://github.com/YanjunLIU-ac/sorotwist" target="_blank">
+                <span class="icon" style="margin-right:5px;"><img src="./static/images/github.svg" alt="Code" style="filter: invert(1);" /></span>
+                <span>Code</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </header>
+    </div>
+
+    <div class="hero-body">
+      <div class="container has-text-centered">
+        <h1 class="title is-1 publication-title is-size-1-mobile" style="font-size: 10rem;">
+          Push-Pull-Twist
+        </h1>
+        <h1 class="subtitle is-1 publication-title is-size-4-mobile" style="font-size: 3.3rem;">
+          Single Twistable Tendon-Driven Continuum Robots<br class="is-hidden-mobile">
+        </h1>
+        <h1 class="is-2 is-italic is-size-4-mobile" style="font-size: 2.2rem; opacity: 85%;">
+          Nature Communications 2026
+        </h1>
+        <h1 class="is-2 is-italic is-size-5-mobile" style="font-size: 1.5rem; opacity: 85%;">
+          <a href="https://jiewn-lai.github.io/" target="_blank" style="color: inherit;">Jiewen Lai</a><sup>1,#</sup>,
+          <a href="https://hk.linkedin.com/in/yanjun-liu-16017a336" target="_blank" style="color: inherit;">Yanjun Liu</a><sup>1,#</sup>,
+          <a href="https://teoren0217.github.io/" target="_blank" style="color: inherit;">Tian-Ao Ren</a><sup>2</sup>,
+          <a href="https://ilovecorn.github.io/" style="color: inherit;">Yan Ma</a><sup>1</sup><br>
+          <a href="https://hk.linkedin.com/in/tao-zhang-554023255" target="_blank" style="color: inherit;">Tao Zhang</a><sup>1</sup>,
+          <a href="https://www.surgery.cuhk.edu.hk/profile.asp?alias=jeremyteoh" target="_blank" style="color: inherit;">Jeremy Teoh</a><sup> 3</sup>,
+          <a href="https://profiles.stanford.edu/mark-cutkosky" target="_blank" style="color: inherit;">Mark R. Cutkosky</a><sup> 2</sup>,
+          <a href="https://www.ee.cuhk.edu.hk/en-gb/people/academic-staff/professors/prof-ren-hongliang" target="_blank" style="color: inherit;">Hongliang Ren</a><sup>1</sup>
+        </h1>
+        <h1 class="is-2 is-italic is-size-6-mobile" style="font-size: 1.2rem; opacity: 85%;">
+          <sup>1</sup>EE, CUHK &nbsp&nbsp&nbsp&nbsp&nbsp<sup>2</sup>ME, Stanford&nbsp&nbsp&nbsp&nbsp&nbsp<sup>3</sup>CUHK Medicine<br>
+          <sup>#</sup>Equal contribution
+        </h1>
+
+        <div class="column has-text-centered is-hidden-tablet">
+          <div class="publication-links">
+            <span class="link-block">
+              <a href="" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                <span class="icon"><img src="./static/images/pdf.svg" alt="PDF" /></span>
+                <span>Paper</span>
+              </a>
+            </span>
+            <span class="link-block">
+              <a href="https://youtu.be/jZHkQFK1uPI" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                <span class="icon"><img src="./static/images/youtube.svg" alt="Video" /></span>
+                <span>Video</span>
+              </a>
+            </span>
+            <span class="link-block">
+              <a href="https://github.com/YanjunLIU-ac/sorotwist" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                <span class="icon"><img src="./static/images/github.svg" alt="Code" style="filter: invert(1);" /></span>
+                <span>Code</span>
+              </a>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-foot is-hidden-mobile">
+      <nav class="tabs is-boxed is-fullwidth is-size-5">
+        <ul>
+          <li><a href="#collection">Single Tendon is All You Need</a></li>
+          <li><a href="#transfer">Push-Pull-Twist Tendon Joint</a></li>
+          <li><a href="#approach">Small Enough and Dexterous</a></li>
+          <li><a href="#system">Biomedical Applications</a></li>
+          <li><a href="#qa">Limitations and Future Steps</a></li>
+        </ul>
+      </nav>
+    </div>
+  </section>
+
+  <section class="section is-medium" id="overview">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column is-four-fifths has-text-justified is-hidden-mobile">
+          <h2 class="subtitle">
+            Tendon-driven continuum robots (TDCRs) with spatial manipulability face fundamental challenges in miniaturization, stemming from the space required to accommodate multiple actuation tendons.
+            <br>
+            <br>
+            Conventional multi-tendon designs create an inherent trade-off between miniaturization, 3D manipulability, and force output.
+          </h2>
+          <br>
+          <h2 class="subtitle">
+            <strong>The key idea —</strong>
+            Miniature TDCRs achieve omnidirectional motion by <strong>pushing, pulling, and twisting one eccentric tendon</strong>, enabling dexterous teleoperation and tortuous-path navigation
+            <span class="rainbow-wave">— and pointing to next-generation surgical actuators</span>.
+          </h2>
+        </div>
+
+        <div class="column is-four-fifths is-hidden-tablet has-text-justified-mobile">
+          <p>
+             Tendon-driven continuum robots (TDCRs) with spatial manipulability face fundamental challenges in miniaturization, stemming from the space required to accommodate multiple actuation tendons.
+            <br>
+            <br>
+            Conventional multi-tendon designs create an inherent trade-off between miniaturization, 3D manipulability, and force output.
+          </p>
+          <br>
+          <p>
+            <strong>The key idea —</strong>
+            Miniature TDCRs achieve omnidirectional motion by <strong>pushing, pulling, and twisting one eccentric tendon</strong>, enabling dexterous teleoperation and tortuous-path navigation
+            <span class="rainbow-wave">— and pointing to next-generation surgical actuators</span>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="video">
+    <div class="container is-max-desktop">
+      <h2 class="title is-1 has-text-centered is-size-4-mobile">Media</h2>
+      <iframe width="100%" style="aspect-ratio: 16 / 9;"
+        src="https://youtu.be/jZHkQFK1uPI" title="Single Twistable Tendon-Driven Continuum Robots"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen></iframe>
+    </div>
+  </section>
+
+  <section class="section is-small" id="collection">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-1 has-text-centered is-size-4-mobile">Single Tendon is All You Need</h2>
+          <div class="content">
+            <p>
+              A major limitation of tendon-driven continuum robots lies in their reliance on multiple tendons for achieving complex 3D motion, hindering miniaturization and manipulability.
+            </p>
+          </div>
+          <div class="content">
+            <p>
+              This work introduces a bio-inspired, notched-tube continuum robot with a novel push-pull-twist (PPT) tendon joint, enabling omnidirectional bending, axial twisting, and near-helical motion using only a single tendon. This design significantly reduces system complexity while preserving mechano-conductivity and enhancing distal tip manipulability, enabling highly compact robots for constrained environments.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <video autoplay muted loop playsinline width="100%">
+    <source src="./static/videos/S2_trim.mp4" type="video/mp4">
+  </video>
+
+  <section class="section is-medium" id="bridge">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column is-four-fifths has-text-justified is-hidden-mobile">
+          <h2 class="subtitle">
+            <strong>All robot motions should be predictable — and ours is no exception.</strong>
+          </h2>
+        </div>
+        <div class="column has-text-justified is-four-fifths is-hidden-tablet">
+          <p>
+           <strong>All robot motions should be predictable — and ours is no exception.</strong>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section is-small has-background-black has-text-light" id="transfer">
+    <div class="container is-max-desktop">
+      <h2 class="title is-1 has-text-white is-size-4-mobile">Push-Pull-Twist Tendon Joint, or PPT Joint</h2>
+      <div class="content has-text-justified">
+        <p>
+          Building on the conventional push–pull mechanism, we introduce a rotational degree of freedom at the proximal anchoring point to enable twist motion.
+        </p>
+      </div>
+      <div class="content has-text-justified">
+        <p>
+           Due to the eccentric alignment relative to the robot’s cross-sectional centroid, along with the compliant 3D-printed (PolyJet) elastic continuum body, the induced twisting torque can be effectively transmitted to the distal end. This mechanism generates substantial out-of-plane motion, offering spatial manipulability.
+        </p>
+      </div>
+      <div class="transfer-figure-stack mt-5">
+        <figure class="transfer-figure">
+          <img src="./static/images/fig_10.png"
+            alt="kinematics">
+        </figure>
+      </div>
+        <video autoplay muted loop playsinline width="100%">
+             <source src="./static/videos/V1 - Trim.mp4" type="video/mp4">
+       </video>
+    </div>
+  </section>
+
+
+
+
+
+  <section class="section is-small" id="approach">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column is-four-fifths is-centered">
+          <h2 class="title is-3 has-text-centered is-size-5-mobile">Small Enough, and Dexterous</h2>
+
+          <div class="content has-text-justified">
+            <p>
+              <strong>Small Enough:</strong> The resulting robot features an outer diameter of 2.0–3.5 mm and a circumferential hollow ratio exceeding 57%, nearly doubling spatial utilization efficiency over multi-tendon designs.
+            </p>
+          </div>
+
+
+        <div class="video-grid">
+          <video autoplay muted loop playsinline src="./static/videos/S4.mp4"></video>
+          <video autoplay muted loop playsinline src="./static/videos/S6.mp4"></video>
+          <video autoplay muted loop playsinline src="./static/videos/S7.mp4"></video>
+          <video autoplay muted loop playsinline src="./static/videos/S8.mp4"></video>
+        </div>
+
+        <br>
+
+          <div class="content has-text-justified" id="representation-robustness">
+            <p>
+              <b>Dexterous:</b>
+            Compared to conventional pull-rotatable base mechanisms, the Yoshikawa manipulability index \( \mu = \sqrt{\det(J J^T)} \)  improves by over 1,000-fold.
+            </p>
+            </p>
+          </div>
+
+
+
+      <div class="transfer-figure-stack mt-5">
+        <figure class="transfer-figure">
+          <img src="./static/images/manip_index.png"
+            alt="kinematics">
+        </figure>
+      </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+    <!-- <section class="section is-small has-background-black has-text-light" id="transfer">
+    <div class="container is-max-desktop">
+      <h2 class="title is-1 has-text-white is-size-4-mobile">Push-Pull-Twist Tendon Joint, or PPT Joint</h2>
+      <div class="content has-text-justified"> -->
+
+  <section class="section is-small has-background-black has-text-light" id="transfer">
+    <div class="container is-fluid">
+      <div class="columns is-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-1 has-text-white has-text-centered is-size-4-mobile">Biomedical Applications</h2>
+          <div class="content">
+            <p>
+              Our design redefines actuation paradigms for tendon-driven continuum robots. The miniaturization and improved dexterity inform the development of next-generation surgical manipulators.
+            </p>
+          </div>
+        <div class="video-grid">
+          <video autoplay muted loop playsinline src="./static/videos/S9.mp4"></video>
+          <video autoplay muted loop playsinline src="./static/videos/S11.mp4"></video>
+          <video autoplay muted loop playsinline src="./static/videos/S12.mp4"></video>
+          <video autoplay muted loop playsinline src="./static/videos/S13.mp4"></video>
+        </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="section is-small" id="paper">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 is-size-4-mobile">Paper, Authors, and BibTeX</h2>
+      <div class="container has-text-centered">
+        <div class="columns is-mobile is-multiline is-centered">
+          <div class="column is-6-mobile is-3-desktop">
+            <div class="author-block has-text-centered has-addons-centered">
+              <figure class="image is-128x128 is-inline-block">
+                <a href="https://jiewen-lai.github.io" target="_blank">
+                  <img class="is-rounded" src="./static/images/jiewen.png" alt="Jiewen Lai">
+                </a>
+              </figure>
+              <br>
+              <a href="https://jiewen-lai.github.io/" target="_blank">Jiewen Lai</a><sup>#</sup>
+            </div>
+          </div>
+          <div class="column is-6-mobile is-3-desktop">
+            <div class="author-block has-text-centered has-addons-centered">
+              <figure class="image is-128x128 is-inline-block">
+                <a href="https://hk.linkedin.com/in/yanjun-liu-16017a336" target="_blank">
+                  <img class="is-rounded" src="./static/images/yanjun.png" alt="Yanjun Liu">
+                </a>
+              </figure>
+              <br>
+              <a href="https://hk.linkedin.com/in/yanjun-liu-16017a336" target="_blank">Yanjun Liu</a><sup>#</sup>
+            </div>
+          </div>
+          <div class="column is-6-mobile is-3-desktop">
+            <div class="author-block has-text-centered has-addons-centered">
+              <figure class="image is-128x128 is-inline-block">
+                <a href="https://teoren0217.github.io/" target="_blank">
+                  <img class="is-rounded" src="./static/images/teo.jpg" alt="Teo">
+                </a>
+              </figure>
+              <br>
+              <a href="https://teoren0217.github.io/" target="_blank">Tian-Ao (Teo) Ren</a>
+            </div>
+          </div>
+          <div class="column is-6-mobile is-3-desktop">
+            <div class="author-block has-text-centered has-addons-centered">
+              <figure class="image is-128x128 is-inline-block">
+                <a href="https://ilovecorn.github.io/" target="_blank">
+                  <img class="is-rounded" src="./static/images/mayan.jpg" alt="Yan Ma">
+                </a>
+              </figure>
+              <br>
+              <a href="https://ilovecorn.github.io/" target="_blank">Yan Ma</a>
+            </div>
+          </div>
+          <div class="column is-6-mobile is-3-desktop">
+            <div class="author-block has-text-centered has-addons-centered">
+              <figure class="image is-128x128 is-inline-block">
+                <a href="https://hk.linkedin.com/in/tao-zhang-554023255" target="_blank">
+                  <img class="is-rounded" src="./static/images/zhangtao.png" alt="Tao Zhang">
+                </a>
+              </figure>
+              <br>
+              <a href="https://hk.linkedin.com/in/tao-zhang-554023255" target="_blank">Tao Zhang</a>
+            </div>
+          </div>
+          <div class="column is-6-mobile is-3-desktop">
+            <div class="author-block has-text-centered has-addons-centered">
+              <figure class="image is-128x128 is-inline-block">
+                <a href="https://www.surgery.cuhk.edu.hk/profile.asp?alias=jeremyteoh" target="_blank">
+                  <img class="is-rounded" src="./static/images/jt.jpg" alt="Jeremyteoh">
+                </a>
+              </figure>
+              <br>
+              <a href="https://www.surgery.cuhk.edu.hk/profile.asp?alias=jeremyteoh" target="_blank">Jeremy Teoh</a>
+            </div>
+          </div>
+          <div class="column is-6-mobile is-3-desktop">
+            <div class="author-block has-text-centered has-addons-centered">
+              <figure class="image is-128x128 is-inline-block">
+                <a href="https://profiles.stanford.edu/mark-cutkosky" target="_blank">
+                  <img class="is-rounded" src="./static/images/mark.png" alt="Mark Cutkosky">
+                </a>
+              </figure>
+              <br>
+              <a href="https://profiles.stanford.edu/mark-cutkosky" target="_blank">Mark Cutkosky</a>
+            </div>
+          </div>
+          <div class="column is-6-mobile is-3-desktop">
+            <div class="author-block has-text-centered has-addons-centered">
+              <figure class="image is-128x128 is-inline-block">
+                <a href="https://www.ee.cuhk.edu.hk/en-gb/people/academic-staff/professors/prof-ren-hongliang" target="_blank">
+                  <img class="is-rounded" src="./static/images/hongliang.jpg" alt="Hongliang Ren">
+                </a>
+              </figure>
+              <br>
+              <a href="https://www.ee.cuhk.edu.hk/en-gb/people/academic-staff/professors/prof-ren-hongliang" target="_blank">Hongliang Ren</a>
+            </div>
+          </div>
+        </div>
+        <div class="publication-authors mt-4">
+          <span class="author-block"><sup>#</sup>Equal contribution</span>
+        </div>
+      </div>
+      <br>
+      <pre><code>@article{lai2026single,
+  title   = {Single Twistable Tendon-Driven Continuum Robots},
+  author  = {Lai, Jiewen and Liu, Yanjun and Ren, Tian-Ao and Ma, Yan and Zhang, Tao and Teoh, Jeremy Yuen-Chun and Cutkosky, Mark R. and Ren, Hongliang},
+  journal = {Nature Communications},
+  year    = {2026}
+}</code></pre>
+      <p>
+        If you have any questions, feel free to contact
+        <a href="mailto:jiewen.lai@cuhk.edu.hk">Jiewen</a> and
+        <a href="mailto:yanjunliu@link.cuhk.edu.hk">Yanjun</a>.
+      </p>
+    </div>
+  </section>
+
+  <section class="section is-small" id="qa">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-4 has-text-centered is-size-5-mobile">Limitations & Future Steps</h2>
+
+          <div class="block">
+            <h3 class="title is-6">What robot structures can benefit from the proposed PPT mechanism?</h3>
+            <p>
+              While this work focuses on cylindrical continuum robots, many other structures—such as cone-shaped cable-driven
+              or pneumatic robots—could benefit from the proposed twistable tendon mechanism. These systems may leverage
+              twist-enabled actuation to achieve richer motion patterns without requiring multiple segments.
+            </p>
+          </div>
+
+          <div class="block">
+            <h3 class="title is-6">How do material properties influence robot behavior?</h3>
+            <p>
+              The relative stiffness between the continuum body and the tendon plays a critical role in determining the robot’s
+              morphology and kinematics. Although our model accounts for stiffness variations, a systematic exploration of
+              material combinations remains an important direction for improving performance and adaptability.
+            </p>
+          </div>
+
+          <div class="block">
+            <h3 class="title is-6">What are the limitations related to hysteresis and friction?</h3>
+            <p>
+              The current system exhibits hysteresis due to tendon friction and soft body deformation. Potential solutions include
+              using more elastic materials or incorporating hysteresis compensation into the model, enabling improved control
+              accuracy and broader material design choices.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content">
+            <p>
+              Website structure and style adapted from <a href="https://umi-under-water.github.io/" target="_blank">UMI Underwater</a> (Thank you, <a href="https://hao-l1.github.io/" target="_blank"">Hao</a>!).
+            </p>
+            <p>
+              Original template lineage includes <a href="https://nerfies.github.io/" target="_blank">NeRFies</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+
+</html>
